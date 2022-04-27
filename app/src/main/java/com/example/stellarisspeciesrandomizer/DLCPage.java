@@ -19,6 +19,7 @@ public class DLCPage extends AppCompatActivity {
     public static boolean hasAncientDlc;
     public static boolean hasFederationsDlc;
     public static boolean hasApocalypseDlc;
+    public static boolean hasUtopiaDlc;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,7 +146,7 @@ public class DLCPage extends AppCompatActivity {
         });
         ImageButton federationsCheckbox = (ImageButton) findViewById(R.id.federations_checkbox);
         federationsCheckbox.setTag("1");
-        lithoidCheckbox.setOnClickListener(new View.OnClickListener() {
+        federationsCheckbox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (federationsCheckbox.getTag() == "1") {
                     federationsCheckbox.setImageResource(R.drawable.checked);
@@ -166,11 +167,27 @@ public class DLCPage extends AppCompatActivity {
                 if (apocalypseCheckbox.getTag() == "1") {
                     apocalypseCheckbox.setImageResource(R.drawable.checked);
                     apocalypseCheckbox.setTag("2");
-                    hasAncientDlc = true;
-                } else if (lithoidCheckbox.getTag() == "2") {
+                    hasApocalypseDlc = true;
+                } else if (apocalypseCheckbox.getTag() == "2") {
                     apocalypseCheckbox.setImageResource(R.drawable.checkmark);
                     apocalypseCheckbox.setTag("1");
-                    hasAncientDlc = false;
+                    hasApocalypseDlc = false;
+                }
+            }
+
+        });
+        ImageButton utopiaCheckbox = (ImageButton) findViewById(R.id.utopia_checkbox);
+        utopiaCheckbox.setTag("1");
+        utopiaCheckbox.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (utopiaCheckbox.getTag() == "1") {
+                    utopiaCheckbox.setImageResource(R.drawable.checked);
+                    utopiaCheckbox.setTag("2");
+                    hasUtopiaDlc = true;
+                } else if (utopiaCheckbox.getTag() == "2") {
+                    utopiaCheckbox.setImageResource(R.drawable.checkmark);
+                    utopiaCheckbox.setTag("1");
+                    hasUtopiaDlc = false;
                 }
             }
 

@@ -33,18 +33,30 @@ public class RandomizerHome extends AppCompatActivity {
         randomizeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String originTrue = RandomSpecies(hi);
-                if (originTrue.equals("Prosperous Unification")){
-                    originImageView.setImageResource(R.drawable.prosperousunification);
-                    System.out.println(originTrue);
-                } else if (originTrue.equals("Galactic Doorstep")){
-                    originImageView.setImageResource(R.drawable.galacticdoorstep);
-                    System.out.println(originTrue);
-                } else if (originTrue.equals("Lost Colony")){
-                    originImageView.setImageResource(R.drawable.lostcolony);
-                    System.out.println(originTrue);
-                } else if (originTrue.equals("hi")){
-                    System.out.println(originTrue);
+                switch(originTrue){
+                    case ("Prosperous Unification"): originImageView.setImageResource(R.drawable.prosperousunification);break;
+                    case ("Galactic Doorstep"): originImageView.setImageResource(R.drawable.galacticdoorstep);break;
+                    case ("Lost Colony"): originImageView.setImageResource(R.drawable.lostcolony);break;
+                    case ("Here Be Dragons"): originImageView.setImageResource(R.drawable.here_be_dragons);break;
+                    case ("Ocean Paradise"): originImageView.setImageResource(R.drawable.ocean_paradise);break;
+                    case ("Clone Army"): originImageView.setImageResource(R.drawable.clones);break;
+                    case ("Necrophage"): originImageView.setImageResource(R.drawable.necrophage);break;
+                    case ("Resource Consolidation"): originImageView.setImageResource(R.drawable.resource_consolidation);break;
+                    case ("Remnants"): originImageView.setImageResource(R.drawable.remnant);break;
+                    case ("Life Seeded"): originImageView.setImageResource(R.drawable.life_seeded);break;
+                    case ("Post-Apocalyptic"): originImageView.setImageResource(R.drawable.post_apocalyptic);break;
+                    case ("Shattered Ring"): originImageView.setImageResource(R.drawable.shattered_ring);break;
+                    case ("Void Dwellers"): originImageView.setImageResource(R.drawable.void_dwellers);break;
+                    case ("Scion"): originImageView.setImageResource(R.drawable.scion);break;
+                    case ("On The Shoulders of Giants"): originImageView.setImageResource(R.drawable.on_the_shoulders_of_giant);break;
+                    case ("Common Ground"): originImageView.setImageResource(R.drawable.common_ground);break;
+                    case ("Hegemon"): originImageView.setImageResource(R.drawable.hegemon);break;
+                    case ("Doomsday"): originImageView.setImageResource(R.drawable.doomsday);break;
+                    case ("Syncretic Evolution"): originImageView.setImageResource(R.drawable.syncretic_evolution);break;
+                    case ("Mechanist"): originImageView.setImageResource(R.drawable.mechanist);break;
+                    case ("Tree of Life"): originImageView.setImageResource(R.drawable.tree_of_life);break;
                 }
+                System.out.println(originTrue);
             }
         });
 
