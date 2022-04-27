@@ -34,6 +34,7 @@ public class DLCPage extends AppCompatActivity {
         }});
             ImageButton aquaticsCheckbox = (ImageButton) findViewById(R.id.aquatic_checkbox);
             aquaticsCheckbox.setTag("1");
+            //hello
             aquaticsCheckbox.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if (aquaticsCheckbox.getTag() == "1") {
