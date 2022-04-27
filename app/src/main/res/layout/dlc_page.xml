@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/dlcbackground"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/apocalypse_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Apocalypse"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/apocalypse_image"
+        app:layout_constraintTop_toBottomOf="@+id/ancient_text" />
+
+    <TextView
+        android:id="@+id/federation_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Federations"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/federations_image"
+        app:layout_constraintTop_toBottomOf="@+id/apocalypse_text" />
+
+    <TextView
+        android:id="@+id/ancient_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Ancient Relic"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/ancient_image"
+        app:layout_constraintTop_toBottomOf="@+id/lithoid_text" />
+
+    <ImageButton
+        android:id="@+id/apocalypse_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/apocalypse_text"
+        app:layout_constraintTop_toBottomOf="@+id/ancient_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/federations_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/federation_text"
+        app:layout_constraintTop_toBottomOf="@+id/apocalypse_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/humanoid_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/humanoid_text"
+        app:layout_constraintTop_toBottomOf="@+id/aquatic_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/plantoid_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/plantoid_text"
+        app:layout_constraintTop_toBottomOf="@+id/humanoid_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/synthetic_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/synthetic_text"
+        app:layout_constraintTop_toBottomOf="@+id/plantoid_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/necroids_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/necroid_text"
+        app:layout_constraintTop_toBottomOf="@+id/synthetic_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageButton
+        android:id="@+id/lithoids_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/lithoid_text"
+        app:layout_constraintTop_toBottomOf="@+id/necroids_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+    <TextView
+        android:id="@+id/necroid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Necroids"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/necroid_image"
+        app:layout_constraintTop_toBottomOf="@+id/synthetic_text" />
+
+    <TextView
+        android:id="@+id/synthetic_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Synthetic"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/synthetic_image"
+        app:layout_constraintTop_toBottomOf="@+id/plantoid_text" />
+
+    <Button
+        android:id="@+id/button_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="40dp"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/aquatic_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aquatics" />
+
+    <ImageView
+        android:id="@+id/humanoid_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aquatic_image"
+        app:srcCompat="@drawable/dlc_humanoids_species_pack" />
+
+    <ImageView
+        android:id="@+id/lithoid_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/necroid_image"
+        app:srcCompat="@drawable/lithoids" />
+
+    <ImageView
+        android:id="@+id/plantoid_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/humanoid_image"
+        app:srcCompat="@drawable/dlc_plantoids_species_pack" />
+
+    <ImageView
+        android:id="@+id/necroid_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/synthetic_image"
+        app:srcCompat="@drawable/necroids" />
+
+    <ImageView
+        android:id="@+id/synthetic_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plantoid_image"
+        app:srcCompat="@drawable/synthetic_dawn" />
+
+    <TextView
+        android:id="@+id/aquatic_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Aquatics"
+        android:textAlignment="gravity"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/aquatic_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/humanoid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Humanoid"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/humanoid_image"
+        app:layout_constraintTop_toBottomOf="@+id/aquatic_text" />
+
+    <TextView
+        android:id="@+id/plantoid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Plantoid"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/plantoid_image"
+        app:layout_constraintTop_toBottomOf="@+id/humanoid_text" />
+
+    <TextView
+        android:id="@+id/lithoid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Lithoids"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/lithoid_image"
+        app:layout_constraintTop_toBottomOf="@+id/necroid_text" />
+
+    <ImageButton
+        android:id="@+id/aquatic_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/aquatic_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/checkmark" />
+
+    <ImageView
+        android:id="@+id/ancient_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lithoid_image"
+        app:srcCompat="@drawable/ancientrelics" />
+
+    <ImageView
+        android:id="@+id/apocalypse_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ancient_image"
+        app:srcCompat="@drawable/apocalypse" />
+
+    <ImageView
+        android:id="@+id/federations_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apocalypse_image"
+        app:srcCompat="@drawable/federations" />
+
+    <ImageButton
+        android:id="@+id/ancient_checkbox"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/ancient_text"
+        app:layout_constraintTop_toBottomOf="@+id/lithoids_checkbox"
+        app:srcCompat="@drawable/checkmark" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
