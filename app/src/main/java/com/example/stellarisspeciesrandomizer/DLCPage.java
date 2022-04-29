@@ -10,16 +10,16 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DLCPage extends AppCompatActivity {
-    public static boolean hasAquaticDlc;
-    public static boolean hasHumanoidDlc;
-    public static boolean hasSyntheticDlc;
-    public static boolean hasPlantoidDlc;
-    public static boolean hasLithoidDlc;
-    public static boolean hasNecroidDlc;
-    public static boolean hasAncientDlc;
-    public static boolean hasFederationsDlc;
-    public static boolean hasApocalypseDlc;
-    public static boolean hasUtopiaDlc;
+    public static boolean hasAquaticDlc = false;
+    public static boolean hasHumanoidDlc = false;
+    public static boolean hasSyntheticDlc = false;
+    public static boolean hasPlantoidDlc = false;
+    public static boolean hasLithoidDlc = false;
+    public static boolean hasNecroidDlc = false;
+    public static boolean hasAncientDlc = false;
+    public static boolean hasFederationsDlc = false;
+    public static boolean hasApocalypseDlc = false;
+    public static boolean hasUtopiaDlc = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
