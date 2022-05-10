@@ -3,11 +3,16 @@ package com.example.stellarisspeciesrandomizer;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Randomizer {
-    public static String RandomSpecies(String origin){
+    private static int[] tall= new int[3] ;
+    public static String RandomSpecies(String origin) throws FileNotFoundException {
+        readFile();
         Random random = new Random();
         ArrayList<String> originArray = new ArrayList<String>();
         String origins1 = "Prosperous Unification";
@@ -32,42 +37,23 @@ public class Randomizer {
         String origin20 = "Syncretic Evolution";
         String origin21 = "Mechanist";
         String origin22 = "String of Life";
-        if (DLCPage.hasAquaticDlc = true){
+
             originArray.add(origins4);
             originArray.add(origins5);
-        } else if (DLCPage.hasAquaticDlc = false) {
-            originArray.remove(origins4);
-            originArray.remove(origins5);
-        }
-        if (DLCPage.hasHumanoidDlc = true){
-            originArray.add(origins6);
-        } else if (DLCPage.hasHumanoidDlc = false) {
-            originArray.remove(origins6);
-        }
-        if (DLCPage.hasNecroidDlc = true){
-            originArray.add(origins7);
-        }else if (DLCPage.hasNecroidDlc = false) {
-            originArray.remove(origins7);
-        }
-        if (DLCPage.hasSyntheticDlc = true){
-            originArray.add(origins18);
-        }else if (DLCPage.hasSyntheticDlc = false) {
-            originArray.remove(origins18);
-        }
-        if (DLCPage.hasAncientDlc = true){
-            originArray.add(origins19);
-        }else if (DLCPage.hasAncientDlc = false) {
-            originArray.remove(origins19);
-        }
-        if (DLCPage.hasApocalypseDlc = true){
 
-            originArray.add(origins16);
-            originArray.add(origins17);
-        } else if (DLCPage.hasApocalypseDlc = false) {
+            originArray.add(origins6);
+
+            originArray.add(origins7);
+
+            originArray.add(origins18);
+
+
+            originArray.add(origins19);
+
+
             originArray.remove(origins17);
             originArray.remove(origins16);
-        }
-        if (DLCPage.hasFederationsDlc = true){
+
             originArray.add(origins8);
             originArray.add(origins9);
             originArray.add(origins10);
@@ -76,31 +62,28 @@ public class Randomizer {
             originArray.add(origins13);
             originArray.add(origins14);
             originArray.add(origins15);
-        } else if (DLCPage.hasFederationsDlc = true) {
-            originArray.remove(origins8);
-            originArray.remove(origins9);
-            originArray.remove(origins10);
-            originArray.remove(origins11);
-            originArray.remove(origins12);
-            originArray.remove(origins13);
-            originArray.remove(origins14);
-            originArray.remove(origins15);
-        }
-        if (DLCPage.hasUtopiaDlc = true){
 
             originArray.add(origin20);
             originArray.add(origin21);
             originArray.add(origin22);
-        }else if (DLCPage.hasUtopiaDlc = false) {
-            originArray.remove(origin20);
-            originArray.remove(origin21);
-            originArray.remove(origin22);
-        }
+
+
         originArray.add(origins1);
         originArray.add(origins2);
         originArray.add(origins3);
         origin = originArray.get(random.nextInt(originArray.size()));
+
         return origin;
+
+    }
+    public static void readFile() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("hasDLC.txt"));
+        tall = new int [100];
+        int i = 0;
+        while(scanner.hasNextInt()){
+            tall[i++] = scanner.nextInt();
+        }
+        System.out.println(tall);
 
     }
 }

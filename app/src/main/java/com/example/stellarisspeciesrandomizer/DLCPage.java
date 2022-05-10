@@ -9,17 +9,13 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class DLCPage extends AppCompatActivity {
-    public static boolean hasAquaticDlc = false;
-    public static boolean hasHumanoidDlc = false;
-    public static boolean hasSyntheticDlc = false;
-    public static boolean hasPlantoidDlc = false;
-    public static boolean hasLithoidDlc = false;
-    public static boolean hasNecroidDlc = false;
-    public static boolean hasAncientDlc = false;
-    public static boolean hasFederationsDlc = false;
-    public static boolean hasApocalypseDlc = false;
-    public static boolean hasUtopiaDlc = false;
+    public static int[] DLCArray;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +23,18 @@ public class DLCPage extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.dlc_page);
+        try {
+            File myObj = new File("hasDLC.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        DLCArray = new int[1];
         Button doneButton = (Button) findViewById(R.id.button_done);
         doneButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,11 +48,11 @@ public class DLCPage extends AppCompatActivity {
                     if (aquaticsCheckbox.getTag() == "1") {
                         aquaticsCheckbox.setImageResource(R.drawable.checked);
                         aquaticsCheckbox.setTag("2");
-                        hasAquaticDlc = true;
+                        DLCArray[0] = 1;
                     } else if (aquaticsCheckbox.getTag() == "2") {
                         aquaticsCheckbox.setImageResource(R.drawable.checkmark);
                         aquaticsCheckbox.setTag("1");
-                        hasAquaticDlc = false;
+                        DLCArray[0] = 0;
                     }
                 }
 
@@ -56,11 +64,11 @@ public class DLCPage extends AppCompatActivity {
                     if (humanoidCheckbox.getTag() == "1") {
                         humanoidCheckbox.setImageResource(R.drawable.checked);
                         humanoidCheckbox.setTag("2");
-                        hasHumanoidDlc = true;
+                        DLCArray[1] = 1;
                     } else if (humanoidCheckbox.getTag() == "2") {
                         humanoidCheckbox.setImageResource(R.drawable.checkmark);
                         humanoidCheckbox.setTag("1");
-                        hasHumanoidDlc = false;
+                        DLCArray[1] = 0;
                     }
                 }
 
@@ -72,11 +80,11 @@ public class DLCPage extends AppCompatActivity {
                     if (plantoidCheckbox.getTag() == "1") {
                         plantoidCheckbox.setImageResource(R.drawable.checked);
                         plantoidCheckbox.setTag("2");
-                        hasPlantoidDlc = true;
+                        DLCArray[2] = 1;
                     } else if (plantoidCheckbox.getTag() == "2") {
                         plantoidCheckbox.setImageResource(R.drawable.checkmark);
                         plantoidCheckbox.setTag("1");
-                        hasPlantoidDlc = false;
+                        DLCArray[2] = 0;
                     }
                 }
 
@@ -88,11 +96,11 @@ public class DLCPage extends AppCompatActivity {
                     if (syntheticCheckbox.getTag() == "1") {
                         syntheticCheckbox.setImageResource(R.drawable.checked);
                         syntheticCheckbox.setTag("2");
-                        hasSyntheticDlc = true;
+                        DLCArray[3] = 1;
                     } else if (syntheticCheckbox.getTag() == "2") {
                         syntheticCheckbox.setImageResource(R.drawable.checkmark);
                         syntheticCheckbox.setTag("1");
-                        hasSyntheticDlc = false;
+                        DLCArray[3] = 0;
                     }
                 }
 
@@ -104,11 +112,11 @@ public class DLCPage extends AppCompatActivity {
                     if (necroidCheckbox.getTag() == "1") {
                         necroidCheckbox.setImageResource(R.drawable.checked);
                         necroidCheckbox.setTag("2");
-                        hasNecroidDlc = true;
+                        DLCArray[4] = 1;
                     } else if (necroidCheckbox.getTag() == "2") {
                         necroidCheckbox.setImageResource(R.drawable.checkmark);
                         necroidCheckbox.setTag("1");
-                        hasNecroidDlc = false;
+                        DLCArray[4] = 0;
                     }
                 }
 
@@ -120,79 +128,85 @@ public class DLCPage extends AppCompatActivity {
                     if (lithoidCheckbox.getTag() == "1") {
                         lithoidCheckbox.setImageResource(R.drawable.checked);
                         lithoidCheckbox.setTag("2");
-                        hasLithoidDlc = true;
+                        DLCArray[5] = 1;
                     } else if (lithoidCheckbox.getTag() == "2") {
                         lithoidCheckbox.setImageResource(R.drawable.checkmark);
                         lithoidCheckbox.setTag("1");
-                        hasLithoidDlc = false;
+                        DLCArray[5] = 0;
                     }
                 }
 
             });
-        ImageButton ancientCheckbox = (ImageButton) findViewById(R.id.ancient_checkbox);
-        ancientCheckbox.setTag("1");
-        ancientCheckbox.setOnClickListener(new View.OnClickListener() {
+            ImageButton ancientCheckbox = (ImageButton) findViewById(R.id.ancient_checkbox);
+            ancientCheckbox.setTag("1");
+            ancientCheckbox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (ancientCheckbox.getTag() == "1") {
                     ancientCheckbox.setImageResource(R.drawable.checked);
                     ancientCheckbox.setTag("2");
-                    hasAncientDlc = true;
+                    DLCArray[6] = 1;
                 } else if (ancientCheckbox.getTag() == "2") {
                     ancientCheckbox.setImageResource(R.drawable.checkmark);
                     ancientCheckbox.setTag("1");
-                    hasAncientDlc = false;
+                    DLCArray[6] = 0;
                 }
             }
 
         });
-        ImageButton federationsCheckbox = (ImageButton) findViewById(R.id.federations_checkbox);
-        federationsCheckbox.setTag("1");
-        federationsCheckbox.setOnClickListener(new View.OnClickListener() {
+            ImageButton federationsCheckbox = (ImageButton) findViewById(R.id.federations_checkbox);
+            federationsCheckbox.setTag("1");
+            federationsCheckbox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (federationsCheckbox.getTag() == "1") {
                     federationsCheckbox.setImageResource(R.drawable.checked);
                     federationsCheckbox.setTag("2");
-                    hasFederationsDlc = true;
+                    DLCArray[7] = 1;
                 } else if (federationsCheckbox.getTag() == "2") {
                     federationsCheckbox.setImageResource(R.drawable.checkmark);
                     federationsCheckbox.setTag("1");
-                    hasFederationsDlc = false;
+                    DLCArray[7] = 0;
                 }
             }
 
         });
-        ImageButton apocalypseCheckbox = (ImageButton) findViewById(R.id.apocalypse_checkbox);
-        apocalypseCheckbox.setTag("1");
-        apocalypseCheckbox.setOnClickListener(new View.OnClickListener() {
+            ImageButton apocalypseCheckbox = (ImageButton) findViewById(R.id.apocalypse_checkbox);
+            apocalypseCheckbox.setTag("1");
+            apocalypseCheckbox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (apocalypseCheckbox.getTag() == "1") {
                     apocalypseCheckbox.setImageResource(R.drawable.checked);
                     apocalypseCheckbox.setTag("2");
-                    hasApocalypseDlc = true;
+                    DLCArray[8] = 1;
                 } else if (apocalypseCheckbox.getTag() == "2") {
                     apocalypseCheckbox.setImageResource(R.drawable.checkmark);
                     apocalypseCheckbox.setTag("1");
-                    hasApocalypseDlc = false;
+                    DLCArray[8] = 0;
                 }
             }
 
         });
-        ImageButton utopiaCheckbox = (ImageButton) findViewById(R.id.utopia_checkbox);
-        utopiaCheckbox.setTag("1");
-        utopiaCheckbox.setOnClickListener(new View.OnClickListener() {
+            ImageButton utopiaCheckbox = (ImageButton) findViewById(R.id.utopia_checkbox);
+            utopiaCheckbox.setTag("1");
+            utopiaCheckbox.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (utopiaCheckbox.getTag() == "1") {
                     utopiaCheckbox.setImageResource(R.drawable.checked);
                     utopiaCheckbox.setTag("2");
-                    hasUtopiaDlc = true;
+                    DLCArray[9] = 1;
                 } else if (utopiaCheckbox.getTag() == "2") {
                     utopiaCheckbox.setImageResource(R.drawable.checkmark);
                     utopiaCheckbox.setTag("1");
-                    hasUtopiaDlc = false;
+                    DLCArray[9] = 0;
                 }
             }
 
         });
-
+            }
+        public static void writeToFile() throws IOException {
+            int len = DLCArray.length;
+            for (int i = 0; i < len; i++) {
+                FileWriter writer = new FileWriter("hasDLC.txt");
+                writer.write(DLCArray[i] + "\t"+ "");
+            }
         }
     }

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileNotFoundException;
+
 public class RandomizerHome extends AppCompatActivity {
     String hi = "hi";
     @Override
@@ -32,7 +34,9 @@ public class RandomizerHome extends AppCompatActivity {
         Button randomizeButton = (Button) findViewById(R.id.randomize_button);
         randomizeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String originTrue = RandomSpecies(hi);
+                String originTrue = "hi";
+                originTrue = RandomSpecies(hi);
+
                 switch(originTrue){
                     case ("Prosperous Unification"): originImageView.setImageResource(R.drawable.prosperousunification);break;
                     case ("Galactic Doorstep"): originImageView.setImageResource(R.drawable.galacticdoorstep);break;
