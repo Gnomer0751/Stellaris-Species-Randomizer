@@ -37,7 +37,8 @@ public class DLCPage extends AppCompatActivity {
         DLCArray = new int[1];
         Button doneButton = (Button) findViewById(R.id.button_done);
         doneButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            public void onClick(View v) throws IOException {
+                writeToFile();
                 finish();
         }});
             ImageButton aquaticsCheckbox = (ImageButton) findViewById(R.id.aquatic_checkbox);

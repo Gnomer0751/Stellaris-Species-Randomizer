@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 public class RandomizerHome extends AppCompatActivity {
     String hi = "hi";
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -33,7 +33,7 @@ public class RandomizerHome extends AppCompatActivity {
         });
         Button randomizeButton = (Button) findViewById(R.id.randomize_button);
         randomizeButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            public void onClick(View v) throws FileNotFoundException {
                 String originTrue = "hi";
                 originTrue = RandomSpecies(hi);
 
