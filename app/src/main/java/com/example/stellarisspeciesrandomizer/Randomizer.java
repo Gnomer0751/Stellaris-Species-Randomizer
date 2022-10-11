@@ -6,77 +6,49 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Randomizer {
-    private static int[] tall= new int[3] ;
-    public static String RandomSpecies(String origin) throws FileNotFoundException {
-        readFile();
+    //private static int[] tall= new int[3] ;
+    public static HashMap RandomSpecies(HashMap<Integer, String> randomizedDict) throws FileNotFoundException {
+        //readFile();
         Random random = new Random();
-        ArrayList<String> originArray = new ArrayList<String>();
-        String origins1 = "Prosperous Unification";
-        String origins2 = "Galactic Doorstep";
-        String origins3 = "Lost Colony";
-        String origins4 = "Here Be Dragons";
-        String origins5 = "Ocean Paradise";
-        String origins6 = "Clone Army";
-        String origins7 = "Necrophage";
-        String origins18 = "Resource Consolidation";
-        String origins19 = "Remnants";
-        String origins16 = "Life Seeded";
-        String origins17 = "Post-Apocalyptic";
-        String origins8 = "Remnants";
-        String origins9 = "Shattered Ring";
-        String origins10 = "Void Dwellers";
-        String origins11 = "Scion";
-        String origins12 = "On The Shoulders of Giants";
-        String origins13 = "Common Ground";
-        String origins14 = "Hegemon";
-        String origins15 = "Doomsday";
-        String origin20 = "Syncretic Evolution";
-        String origin21 = "Mechanist";
-        String origin22 = "String of Life";
+        HashMap<Integer,String> originDict = new HashMap<Integer,String>();
 
-            originArray.add(origins4);
-            originArray.add(origins5);
+        originDict.put(1,"Prosperous Unification");
+        originDict.put(2, "Galactic Doorstep");
+        originDict.put(3,"Lost Colony");
+        originDict.put(4,"Here Be Dragons");
+        originDict.put(5, "Ocean Paradise");
+        originDict.put(6, "Clone Army");
+        originDict.put(7, "Necrophage");
+        originDict.put(8, "Remnants");
+        originDict.put(9, "Life Seeded");
+        originDict.put(10, "Post-Apocalyptic");
+        originDict.put(11, "Remnants");
+        originDict.put(12, "Shattered Ring");
+        originDict.put(13, "Void Dwellers");
+        originDict.put(14, "Scion");
+        originDict.put(15, "On The Shoulders of Giants");
+        originDict.put(16, "Common Ground");
+        originDict.put(17, "Hegemon");
+        originDict.put(18, "Doomsday");
+        originDict.put(19, "Syncretic Evolution");
+        originDict.put(20, "Mechanist");
+        originDict.put(21, "String of Life");
 
-            originArray.add(origins6);
-
-            originArray.add(origins7);
-
-            originArray.add(origins18);
-
-
-            originArray.add(origins19);
-
-
-            originArray.remove(origins17);
-            originArray.remove(origins16);
-
-            originArray.add(origins8);
-            originArray.add(origins9);
-            originArray.add(origins10);
-            originArray.add(origins11);
-            originArray.add(origins12);
-            originArray.add(origins13);
-            originArray.add(origins14);
-            originArray.add(origins15);
-
-            originArray.add(origin20);
-            originArray.add(origin21);
-            originArray.add(origin22);
-
-
-        originArray.add(origins1);
-        originArray.add(origins2);
-        originArray.add(origins3);
-        origin = originArray.get(random.nextInt(originArray.size()));
-
-        return origin;
-
+        String origin = originDict.get(random.nextInt(originDict.size()));
+        randomizedDict = new HashMap<Integer, String>();
+        randomizedDict.put(1,origin);
+        return randomizedDict;
     }
-    public static void readFile() throws FileNotFoundException {
+    /*public static void readFile() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("hasDLC.txt"));
         tall = new int [100];
         int i = 0;
@@ -85,5 +57,5 @@ public class Randomizer {
         }
         System.out.println(tall);
 
-    }
+    }*/
 }

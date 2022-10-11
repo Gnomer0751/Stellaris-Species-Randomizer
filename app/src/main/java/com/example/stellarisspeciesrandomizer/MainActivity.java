@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         Intent randomizerIntent = new Intent(this, RandomizerHome.class);
-        Button foodButton = (Button) findViewById(R.id.button_start);
-        foodButton.setOnClickListener(new View.OnClickListener() {
+        Button intentButton = (Button) findViewById(R.id.button_start);
+        intentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(randomizerIntent);
             }

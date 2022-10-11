@@ -13,9 +13,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 public class RandomizerHome extends AppCompatActivity {
-    String hi = "hi";
     @Override
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -26,18 +27,23 @@ public class RandomizerHome extends AppCompatActivity {
         ImageView originImageView =(ImageView) findViewById(R.id.originImageView);
         Intent dlcIntent = new Intent(this, DLCPage.class);
         Button dlcButton = (Button) findViewById(R.id.dlc_button);
-        dlcButton.setOnClickListener(new View.OnClickListener() {
+        /*dlcButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(dlcIntent);
             }
-        });
+        });*/
         Button randomizeButton = (Button) findViewById(R.id.randomize_button);
         randomizeButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) throws FileNotFoundException {
-                String originTrue = "hi";
-                originTrue = RandomSpecies(hi);
+            public void onClick(View v) {
 
-                switch(originTrue){
+                HashMap<Integer, String> randomizedDict = new HashMap<Integer,String>();
+                try {
+                    randomizedDict = RandomSpecies(randomizedDict);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                switch(randomizedDict.get(1)){
                     case ("Prosperous Unification"): originImageView.setImageResource(R.drawable.prosperousunification);break;
                     case ("Galactic Doorstep"): originImageView.setImageResource(R.drawable.galacticdoorstep);break;
                     case ("Lost Colony"): originImageView.setImageResource(R.drawable.lostcolony);break;
@@ -60,7 +66,7 @@ public class RandomizerHome extends AppCompatActivity {
                     case ("Mechanist"): originImageView.setImageResource(R.drawable.mechanist);break;
                     case ("Tree of Life"): originImageView.setImageResource(R.drawable.tree_of_life);break;
                 }
-                System.out.println(originTrue);
+                System.out.println(randomizedDict.get(1));
             }
         });
 
