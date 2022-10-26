@@ -43,7 +43,7 @@ public class RandomizerHome extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                switch(randomizedDict.get(1)){
+                switch(randomizedDict.get(2)){
                     case ("Prosperous Unification"): originImageView.setImageResource(R.drawable.prosperousunification);break;
                     case ("Galactic Doorstep"): originImageView.setImageResource(R.drawable.galacticdoorstep);break;
                     case ("Lost Colony"): originImageView.setImageResource(R.drawable.lostcolony);break;
