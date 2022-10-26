@@ -15,53 +15,44 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Randomizer {
-    //private static int[] tall= new int[3] ;
-    public static HashMap<Integer,String> ethicsDict = new HashMap<Integer,String>();
+    public static ArrayList<String> ethicsDict = new ArrayList();
     public static HashMap<Integer,String> ethicsChoiceDict = new HashMap<Integer,String>();
+    public static boolean isGestalt;
     public static HashMap RandomSpecies(HashMap<Integer, String> randomizedDict) throws FileNotFoundException {
-        //readFile();
         Random random = new Random();
         HashMap<Integer,String> originDict = new HashMap<Integer,String>();
         HashMap<Integer,String> speciesDict = new HashMap<Integer,String>();
 
 
-        speciesDict.put(1,"Humanoid");
-        speciesDict.put(2,"Mammalian");
-        speciesDict.put(3,"Reptilian");
-        speciesDict.put(4,"Avian");
-        speciesDict.put(5,"Arthropoid");
-        speciesDict.put(6,"Molluscoid");
-        speciesDict.put(7,"Fungoid");
-        speciesDict.put(8,"Plantoid");
-        speciesDict.put(9,"Lithoid");
-        speciesDict.put(10,"Necroid");
-        speciesDict.put(11,"Aquatic");
-        speciesDict.put(12,"Toxoid");
-        speciesDict.put(13,"Machine");
+        speciesDict.put(0,"Humanoid");
+        speciesDict.put(1,"Mammalian");
+        speciesDict.put(2,"Reptilian");
+        speciesDict.put(3,"Avian");
+        speciesDict.put(4,"Arthropoid");
+        speciesDict.put(5,"Molluscoid");
+        speciesDict.put(6,"Fungoid");
+        speciesDict.put(7,"Plantoid");
+        speciesDict.put(8,"Lithoid");
+        speciesDict.put(9,"Necroid");
+        speciesDict.put(10,"Aquatic");
+        speciesDict.put(11,"Toxoid");
+        speciesDict.put(12,"Machine");
         String species = speciesDict.get(random.nextInt(speciesDict.size()));
 
-        ethicsDict.put(1,"Gestalt Consciousness");
-        ethicsDict.put(2,"Militarist");
-        ethicsDict.put(3,"Fanatic Militarist");
-        ethicsDict.put(4,"Pacifist");
-        ethicsDict.put(5,"Fanatic Pacifist");
-        ethicsDict.put(6,"Authoritarian");
-        ethicsDict.put(7,"Fanatic Authoritarian");
-        ethicsDict.put(8,"Egalitarian");
-        ethicsDict.put(9,"Fanatic Egalitarian");
-        ethicsDict.put(10,"Xenophile");
-        ethicsDict.put(11,"Fanatic Xenophile");
-        ethicsDict.put(12,"Xenophobe");
-        ethicsDict.put(13,"Fanatic Xenophobe");
-        ethicsDict.put(14,"Spiritualist");
-        ethicsDict.put(15,"Fanatic Spiritualist");
-        ethicsDict.put(16,"Materialist");
-        ethicsDict.put(17,"Fanatic Materialist");
+        ethicsDict.add("Gestalt Consciousness");
+        ethicsDict.add("Militarist");
+        ethicsDict.add("Pacifist");
+        ethicsDict.add("Authoritarian");
+        ethicsDict.add("Egalitarian");
+        ethicsDict.add("Xenophile");
+        ethicsDict.add("Xenophobe");
+        ethicsDict.add("Spiritualist");
+        ethicsDict.add("Materialist");
         chooseEthics();
 
 
-        String ethics = ethicsDict.get(random.nextInt(ethicsDict.size()));
-        if (species.equals("Machine")){
+        String ethics = ethicsChoiceDict.toString();
+        if (species.equals("Machine")||isGestalt==true||ethicsChoiceDict.containsValue("Gestalt Consciousness")){
             ethics = "Gestalt Consciousness";
         }
 
@@ -94,29 +85,66 @@ public class Randomizer {
         randomizedDict = new HashMap<Integer, String>();
         randomizedDict.put(1,species);
         randomizedDict.put(2,origin);
+        randomizedDict.put(3,ethics);
+        System.out.print(randomizedDict);
         return randomizedDict;
+
     }
     public static void chooseEthics(){
+        Random random = new Random();
+        int isGestaltInt = random.nextInt(8);
+        if (isGestaltInt == 0){
+            isGestalt = true;
+        }
         for(int i=1;i<4;i++){
-            Random random = new Random();
             ethicsChoiceDict.put(i,ethicsDict.get(random.nextInt(ethicsDict.size())));
-            String Choice = ethicsChoiceDict.get(i);
-
+            String choice = ethicsChoiceDict.get(i);
+            if (ethicsChoiceDict.containsValue("Militarist")){
+                ethicsDict.remove("Pacifist");
+                ethicsDict.remove("Militarist");
+            }
+            if (ethicsChoiceDict.containsValue("Pacifist")){
+                ethicsDict.remove("Militarist");
+                ethicsDict.remove("Pacifist");
+            }
+            if (ethicsChoiceDict.containsValue("Authoritarian")){
+                ethicsDict.remove("Egalitarian");
+                ethicsDict.remove("Authoritarian");
+            }
+            if (ethicsChoiceDict.containsValue("Egalitarian")){
+                ethicsDict.remove("Authoritarian");
+                ethicsDict.remove("Egalitarian");
+            }
+            if (ethicsChoiceDict.containsValue("Xenophile")){
+                ethicsDict.remove("Xenophobe");
+                ethicsDict.remove("Xenophile");
+            }
+            if (ethicsChoiceDict.containsValue("Xenophobe")){
+                ethicsDict.remove("Xenophile");
+                ethicsDict.remove("Xenophobe");
+            }
+            if (ethicsChoiceDict.containsValue("Spiritualist")){
+                ethicsDict.remove("Materialist");
+                ethicsDict.remove("Spiritualist");
+            }
+            if (ethicsChoiceDict.containsValue("Materialist")){
+                ethicsDict.remove("Spiritualist");
+                ethicsDict.remove("Materialist");
+            }
+            int isFanatic = random.nextInt(2);
+            if (i!=3) {
+                // to make sure there isn't 2 fanatics
+                if (isFanatic == 1) {
+                    choice = "Fanatic " + choice;
+                    ethicsChoiceDict.put(i, choice);
+                    i++;
+                }
+            }
+            if (!ethicsChoiceDict.containsValue("Gestalt Consciousness")){
+                ethicsDict.remove("Gestalt Consciousness");
+            }
 
         }
-        if ((ethicsChoiceDict.containsValue("Militarist")&&ethicsChoiceDict.containsValue("Pacifist"))||(ethicsChoiceDict.containsValue("Fanatic Militarist")&&ethicsChoiceDict.containsValue("Fanatic Pacifist"))||(ethicsChoiceDict.containsValue("Fanatic Pacifist")&&ethicsChoiceDict.containsValue("Militarist"))||(ethicsChoiceDict.containsValue("Fanatic Militarist")&&ethicsChoiceDict.containsValue("Pacifist"))){
-            chooseEthics();
 
-        }
     }
-    /*public static void readFile() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("hasDLC.txt"));
-        tall = new int [100];
-        int i = 0;
-        while(scanner.hasNextInt()){
-            tall[i++] = scanner.nextInt();
-        }
-        System.out.println(tall);
-
-    }*/
 }
