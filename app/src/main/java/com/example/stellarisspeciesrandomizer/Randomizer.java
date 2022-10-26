@@ -138,6 +138,7 @@ public class Randomizer {
                     choice = "Fanatic " + choice;
                     ethicsChoiceDict.put(i, choice);
                     i++;
+
                 }
             }
             if (!ethicsChoiceDict.containsValue("Gestalt Consciousness")){
