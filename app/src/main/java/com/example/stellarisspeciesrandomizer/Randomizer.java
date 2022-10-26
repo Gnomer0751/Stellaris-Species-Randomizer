@@ -15,8 +15,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Randomizer {
-    public static ArrayList<String> ethicsDict = new ArrayList();
-    public static HashMap<Integer,String> ethicsChoiceDict = new HashMap<Integer,String>();
+
     public static boolean isGestalt;
     public static HashMap RandomSpecies(HashMap<Integer, String> randomizedDict) throws FileNotFoundException {
         Random random = new Random();
@@ -38,48 +37,76 @@ public class Randomizer {
         speciesDict.put(11,"Toxoid");
         speciesDict.put(12,"Machine");
         String species = speciesDict.get(random.nextInt(speciesDict.size()));
+        ArrayList<String[]> gov_ethics = new ArrayList<String[]>();
+        ArrayList<String> generated_gov_ethics = new ArrayList<String>();
 
-        ethicsDict.add("Gestalt Consciousness");
-        ethicsDict.add("Militarist");
-        ethicsDict.add("Pacifist");
-        ethicsDict.add("Authoritarian");
-        ethicsDict.add("Egalitarian");
-        ethicsDict.add("Xenophile");
-        ethicsDict.add("Xenophobe");
-        ethicsDict.add("Spiritualist");
-        ethicsDict.add("Materialist");
-        chooseEthics();
+        // Ethic pairs
+        String[] NS = {"Militarist", "Pacifist"};
+        String[] NeSw = {"Xenophobe", "Xenophile"};
+        String[] EW = {"Egalitarian", "Authoritarian"};
+        String[] SeNw = {"Materialist", "Spiritualist"};
+        String[] Gestalt = {"Gestalt Consciousness"};
 
-
-        String ethics = ethicsChoiceDict.toString();
-        if (species.equals("Machine")||isGestalt==true||ethicsChoiceDict.containsValue("Gestalt Consciousness")){
-            ethics = "Gestalt Consciousness";
+        // Adds ethic pairs to gov_ethics
+        String[][] all = {NS, NeSw, EW, SeNw, Gestalt};
+        for (int i = 0; i < all.length; i++) {
+            gov_ethics.add(all[i]);
         }
+        int points_available = 3;
+        while (points_available > 0) {
+            Random rng = new Random();
+            // Picks random pair
+            int idx = rng.nextInt(gov_ethics.size());
+            String[] rand_pair = gov_ethics.get(idx);
+            gov_ethics.remove(idx); // Prevents duplicate pulls
+            // Picks from pair
+            idx = rng.nextInt(rand_pair.length);
+            String ethic = rand_pair[idx];
+            // Gestalt exception
+            if (points_available == 3) { // Makes sure following check only runs on first run of while loop
+                if (ethic.equals("Gestalt Consciousness")) {
+                    generated_gov_ethics.add(ethic);
+                    break;
+                } else {
+                    gov_ethics.remove(gov_ethics.size() - 1);
+                }
+            }
+            // Determines if ethic is Fanatic
+            int points = rng.nextInt(2) + 1;
+            if (points > 1 && points_available > 1) {
+                ethic = "Fanatic " + ethic;
+            }
+            generated_gov_ethics.add(ethic);
+            points_available -= points;
+        }
+        for (String ethic : generated_gov_ethics) {
+            System.out.print(ethic + ", ");
+        }
+        System.out.print("\n");
 
+        String ethics = generated_gov_ethics.toString();
 
-
-
-        originDict.put(1,"Prosperous Unification");
-        originDict.put(2, "Galactic Doorstep");
-        originDict.put(3,"Lost Colony");
-        originDict.put(4,"Here Be Dragons");
-        originDict.put(5, "Ocean Paradise");
-        originDict.put(6, "Clone Army");
-        originDict.put(7, "Necrophage");
-        originDict.put(8, "Remnants");
-        originDict.put(9, "Life Seeded");
-        originDict.put(10, "Post-Apocalyptic");
-        originDict.put(11, "Remnants");
-        originDict.put(12, "Shattered Ring");
-        originDict.put(13, "Void Dwellers");
-        originDict.put(14, "Scion");
-        originDict.put(15, "On The Shoulders of Giants");
-        originDict.put(16, "Common Ground");
-        originDict.put(17, "Hegemon");
-        originDict.put(18, "Doomsday");
-        originDict.put(19, "Syncretic Evolution");
-        originDict.put(20, "Mechanist");
-        originDict.put(21, "String of Life");
+        originDict.put(0,"Prosperous Unification");
+        originDict.put(1, "Galactic Doorstep");
+        originDict.put(2,"Lost Colony");
+        originDict.put(3,"Here Be Dragons");
+        originDict.put(4, "Ocean Paradise");
+        originDict.put(5, "Clone Army");
+        originDict.put(6, "Necrophage");
+        originDict.put(7, "Remnants");
+        originDict.put(8, "Life Seeded");
+        originDict.put(9, "Post-Apocalyptic");
+        originDict.put(10, "Remnants");
+        originDict.put(11, "Shattered Ring");
+        originDict.put(12, "Void Dwellers");
+        originDict.put(13, "Scion");
+        originDict.put(14, "On The Shoulders of Giants");
+        originDict.put(15, "Common Ground");
+        originDict.put(16, "Hegemon");
+        originDict.put(17, "Doomsday");
+        originDict.put(18, "Syncretic Evolution");
+        originDict.put(19, "Mechanist");
+        originDict.put(20, "String of Life");
 
         String origin = originDict.get(random.nextInt(originDict.size()));
         randomizedDict = new HashMap<Integer, String>();
@@ -88,64 +115,6 @@ public class Randomizer {
         randomizedDict.put(3,ethics);
         System.out.print(randomizedDict);
         return randomizedDict;
-
-    }
-    public static void chooseEthics(){
-        Random random = new Random();
-        int isGestaltInt = random.nextInt(8);
-        if (isGestaltInt == 0){
-            isGestalt = true;
-        }
-        for(int i=1;i<4;i++){
-            ethicsChoiceDict.put(i,ethicsDict.get(random.nextInt(ethicsDict.size())));
-            String choice = ethicsChoiceDict.get(i);
-            if (ethicsChoiceDict.containsValue("Militarist")){
-                ethicsDict.remove("Pacifist");
-                ethicsDict.remove("Militarist");
-            }
-            if (ethicsChoiceDict.containsValue("Pacifist")){
-                ethicsDict.remove("Militarist");
-                ethicsDict.remove("Pacifist");
-            }
-            if (ethicsChoiceDict.containsValue("Authoritarian")){
-                ethicsDict.remove("Egalitarian");
-                ethicsDict.remove("Authoritarian");
-            }
-            if (ethicsChoiceDict.containsValue("Egalitarian")){
-                ethicsDict.remove("Authoritarian");
-                ethicsDict.remove("Egalitarian");
-            }
-            if (ethicsChoiceDict.containsValue("Xenophile")){
-                ethicsDict.remove("Xenophobe");
-                ethicsDict.remove("Xenophile");
-            }
-            if (ethicsChoiceDict.containsValue("Xenophobe")){
-                ethicsDict.remove("Xenophile");
-                ethicsDict.remove("Xenophobe");
-            }
-            if (ethicsChoiceDict.containsValue("Spiritualist")){
-                ethicsDict.remove("Materialist");
-                ethicsDict.remove("Spiritualist");
-            }
-            if (ethicsChoiceDict.containsValue("Materialist")){
-                ethicsDict.remove("Spiritualist");
-                ethicsDict.remove("Materialist");
-            }
-            int isFanatic = random.nextInt(2);
-            if (i!=3) {
-                // to make sure there isn't 2 fanatics
-                if (isFanatic == 1) {
-                    choice = "Fanatic " + choice;
-                    ethicsChoiceDict.put(i, choice);
-                    i++;
-
-                }
-            }
-            if (!ethicsChoiceDict.containsValue("Gestalt Consciousness")){
-                ethicsDict.remove("Gestalt Consciousness");
-            }
-
-        }
 
     }
 }
